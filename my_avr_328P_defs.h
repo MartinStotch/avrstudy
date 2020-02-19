@@ -372,16 +372,16 @@
 #define	WD_SYSTEM_RESET_ENABLED										BIT1(1,	WDE)
 #define	WD_SYSTEM_RESET_DISABLED									BIT1(0,	WDE)
 // Watchdog Timer Prescale Select WDP[3:0]
-#deifne	WD_TIMER_PRESCALER_2048_CYCLES								BIT4(0,	0,	0,	0,	WDP3,	WDP2,	WDP1, 	WDP0)
-#deifne	WD_TIMER_PRESCALER_4096_CYCLES								BIT4(0,	0,	0,	1,	WDP3,	WDP2,	WDP1, 	WDP0)
-#deifne	WD_TIMER_PRESCALER_8192_CYCLES								BIT4(0,	0,	1,	0,	WDP3,	WDP2,	WDP1, 	WDP0)
-#deifne	WD_TIMER_PRESCALER_16384_CYCLES								BIT4(0,	0,	1,	1,	WDP3,	WDP2,	WDP1, 	WDP0)
-#deifne	WD_TIMER_PRESCALER_32768_CYCLES								BIT4(0,	1,	0,	0,	WDP3,	WDP2,	WDP1, 	WDP0)
-#deifne	WD_TIMER_PRESCALER_65536_CYCLES								BIT4(0,	1,	0,	1,	WDP3,	WDP2,	WDP1, 	WDP0)
-#deifne	WD_TIMER_PRESCALER_131072_CYCLES							BIT4(0,	1,	1,	0,	WDP3,	WDP2,	WDP1, 	WDP0)
-#deifne	WD_TIMER_PRESCALER_262144_CYCLES							BIT4(0,	1,	1,	1,	WDP3,	WDP2,	WDP1, 	WDP0)
-#deifne	WD_TIMER_PRESCALER_524288_CYCLES							BIT4(1,	0,	0,	0,	WDP3,	WDP2,	WDP1, 	WDP0)
-#deifne	WD_TIMER_PRESCALER_1048576_CYCLES							BIT4(1,	0,	0,	1,	WDP3,	WDP2,	WDP1, 	WDP0)
+#define	WD_TIMER_PRESCALER_2048_CYCLES								BIT4(0,	0,	0,	0,	WDP3,	WDP2,	WDP1, 	WDP0)
+#define	WD_TIMER_PRESCALER_4096_CYCLES								BIT4(0,	0,	0,	1,	WDP3,	WDP2,	WDP1, 	WDP0)
+#define	WD_TIMER_PRESCALER_8192_CYCLES								BIT4(0,	0,	1,	0,	WDP3,	WDP2,	WDP1, 	WDP0)
+#define	WD_TIMER_PRESCALER_16384_CYCLES								BIT4(0,	0,	1,	1,	WDP3,	WDP2,	WDP1, 	WDP0)
+#define	WD_TIMER_PRESCALER_32768_CYCLES								BIT4(0,	1,	0,	0,	WDP3,	WDP2,	WDP1, 	WDP0)
+#define	WD_TIMER_PRESCALER_65536_CYCLES								BIT4(0,	1,	0,	1,	WDP3,	WDP2,	WDP1, 	WDP0)
+#define	WD_TIMER_PRESCALER_131072_CYCLES							BIT4(0,	1,	1,	0,	WDP3,	WDP2,	WDP1, 	WDP0)
+#define	WD_TIMER_PRESCALER_262144_CYCLES							BIT4(0,	1,	1,	1,	WDP3,	WDP2,	WDP1, 	WDP0)
+#define	WD_TIMER_PRESCALER_524288_CYCLES							BIT4(1,	0,	0,	0,	WDP3,	WDP2,	WDP1, 	WDP0)
+#define	WD_TIMER_PRESCALER_1048576_CYCLES							BIT4(1,	0,	0,	1,	WDP3,	WDP2,	WDP1, 	WDP0)
 
 /*** System Clock ***/
 // Clock Prescaler Select CLKPS[3:0]
@@ -490,13 +490,29 @@
 // Transmitter 0 Enable TXEN0
 #define	USART0_TRANSMITTER_ENABLED									BIT1(1,	TXEN0)
 #define	USART0_TRANSMITTER_DISABLED									BIT1(0,	TXEN0)
-
-
-
-
-
-
-
-
-
+// Mode UMSEL0[1:0]
+#define USART0_ASYNC_MODE                                           BIT2(0, 0,  UMSEL01,    UMSEL00)
+#define USART0_SYNC_MODE                                            BIT2(0, 1,  UMSEL01,    UMSEL00)
+#define USART0_MASTER_SPI_MODE                                      BIT2(1, 1,  UMSEL01,    UMSEL00)
+// Parity Mode UPM0[1:0]
+#define USART0_DISABLED_PARITY                                      BIT2(0, 0,  UPM01,  UPM00)
+#define USART0_EVEN_PARITY                                          BIT2(1, 0,  UPM01,  UPM00)
+#define USART0_ODD_PARITY                                           BIT2(1, 1,  UPM01,  UPM00)
+// Stop Bits USBS0
+#define USART0_1_STOP_BIT                                           BIT1(0, USBS0)
+#define USART0_2_STOP_BITS                                          BIT1(1, USBS0)
+// Character Size UCSZ02, UCSZ0[1:0]
+#define USART0_UCSZ02_5_BIT_SIZE                                    BIT1(0, UCSZ02)
+#define USART0_UCSZ02_6_BIT_SIZE                                    BIT1(0, UCSZ02)
+#define USART0_UCSZ02_7_BIT_SIZE                                    BIT1(0, UCSZ02)
+#define USART0_UCSZ02_8_BIT_SIZE                                    BIT1(0, UCSZ02)
+#define USART0_UCSZ02_9_BIT_SIZE                                    BIT1(1, UCSZ02)
+#define USART_UCSZ01_00_5_BIT_SIZE                                  BIT2(0, 0,  UCSZ01, UCSZ00)
+#define USART_UCSZ01_00_6_BIT_SIZE                                  BIT2(0, 1,  UCSZ01, UCSZ00)
+#define USART_UCSZ01_00_7_BIT_SIZE                                  BIT2(1, 0,  UCSZ01, UCSZ00)
+#define USART_UCSZ01_00_8_BIT_SIZE                                  BIT2(1, 1,  UCSZ01, UCSZ00)
+#define USART_UCSZ01_00_9_BIT_SIZE                                  BIT2(1, 1,  UCSZ01, UCSZ00)
+// Clock Polarity UCPOL0
+#define USART_XCK0_RISE_TRANS_FALL_REC                              BIT1(0, UCPOL0)
+#define USART_XCK0_FALL_TRANS_RISE_REC                              BIT1(1, UCPOL0)
 /* end-of-file */
